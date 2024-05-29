@@ -52,3 +52,85 @@ Como tarea final y adicional, lo ideal es poder realizar todos los ejercicios de
 // - Se puede iterar desde 2 hasta la raíz cuadrada del número, y si no hay ningún número en ese rango que lo divida exactamente, entonces el número es primo
 
 
+//1. Realizar una función que solicite usuario y contraseña. Si son "user" y "pass" respectivamente, mostrar un mensaje dando la bienvenida al usuario.
+
+function login(nombre, pw){
+    if( nombre == "user" && pw == "pass" ){
+        alert("Bienvenido, " + nombre)
+    }else{
+        alert("LLamamos a la policia")
+    }
+}
+
+//let user = prompt("¿Cual es tu usuario?")
+//let contraseña = prompt("¿Cual es tu contraseña?")
+
+//login(user, contraseña)
+
+
+//2. Realizar una función que reciba por parámetro un número. Mostrar un mensaje con ese número elevado al cuadrado. (Elevar un número al cuadrado consiste en multiplicarlo por sí mismo dos veces. Ejemplo: 3 al cuadrado es 3x3).
+
+
+const cuadrificadora = function (num){
+    alert(num*num*num)
+}
+
+//let numero = Number(prompt("¿Que numero quiero elevar al cubo?"))
+
+//cuadrificadora(numero)
+
+
+//3. Realizar una función que reciba por parámetros nombre y apellido. La función debe RETORNAR un saludo del siguiente tipo: "Hola (nombre) (apellido), gusto en saludarte!"
+
+const saludador3000 = function (nombre, apellido) {
+    return "Hola " + nombre + " " + apellido + ", gusto en saludarte!"
+}
+
+//const nombre = prompt("¿Cual es tu nombre?")
+//const apellido = prompt("¿Cual es tu apellido")
+
+//alert(saludador3000(nombre, apellido))
+
+//Imaginemos un sistema de turnos médicos, queremos recorrer un ciclo FOR a partir de una función que recibe un parámetro numérico, el cual será quien defina cuántas veces iterará el ciclo para mostrar turnos disponibles para este mes: ¿Cómo podríamos lograrlo?
+
+const turnero = (num) => {
+    console.log("Los turnos de este mes son los siguientes: ")
+    for (let i = 1; i <= num; i++) {
+        console.log("Turno numero: " + i)
+    }
+}
+
+//let numeroDeTurnos = Number(prompt("Hola doctor, que cantidad de turnos quiere dar usted este mes: "))
+
+//turnero(numeroDeTurnos)
+
+/*Si tenemos un negocio y todos los meses compramos productos para vender pero por catálogo nos entregan el precio sin IVA, ¿Cómo podríamos agregar el iva a los productos?
+Teniendo la constante IVA = 1.21, imagina una función flecha la cual reciba un valor numérico como parámetro, y que retorne dicho valor con IVA incluido. 
+El IVA debe tomarse de una constante, para que la función sea dinámica. ¿Cómo te imaginas el resultado?*/
+
+const IVA = 1.19
+
+const calculadoraDePrecioConIVA = (num) => {
+    return num * IVA
+}
+
+/*
+const cantidadDeProductos = Number(prompt("¿Cuantos productos quiere calcular con IVA?"))
+
+for (let i = 1; i <= cantidadDeProductos; i++) {
+    let precioSinIVA = Number(prompt("Precio del producto " + i))
+    let precioConIVA = calculadoraDePrecioConIVA(precioSinIVA)
+    console.log("El precio con iva del producto numero " + i +" es: " + precioConIVA)
+}
+*/
+
+let precioSinIVA = 1
+
+while(precioSinIVA != 0){
+    precioSinIVA = Number(prompt("Precio del producto"))
+    if(precioSinIVA !== 0){
+        let precioConIVA = calculadoraDePrecioConIVA(precioSinIVA)
+        console.log("El precio con iva del producto numero " + "es: " + precioConIVA)
+        alert("Si quiere dejar de calcular mande 0")
+    }
+}
