@@ -1,0 +1,29 @@
+{
+    "productos": [
+      {
+        "id": 1,
+        "nombre": "Libro 'Cien años de soledad'",
+        "autor": "Gabriel García Márquez",
+        "precio": 150.00
+      },
+      {
+        "id": 2,
+        "nombre": "Cuaderno A4",
+        "marca": "Staples",
+        "precio": 50.00
+      },
+      {
+        "id": 3,
+        "nombre": "Bolígrafo azul",
+        "marca": "Bic",
+        "precio": 10.00
+      },
+      {
+        "id": 4,
+        "nombre": "Marcadores de colores (paquete de 10)",
+        "marca": "Sharpie",
+        "precio": 200.00
+      }
+    ]
+}
+  
