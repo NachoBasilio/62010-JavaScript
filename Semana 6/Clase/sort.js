@@ -1,3 +1,25 @@
+
+// const items = [
+//     { name: 'Charmander', price: 37 },
+//     { name: 'Pidgey', price: 45 },
+//     { name: 'Pikachu', price: 21 },
+//     { name: 'Squirtle', price: 60 }
+//   ]
+// items.sort((a, b) => {
+//     if (a.name > b.name) {
+//         return 1;
+//     }
+//     if (a.name < b.name) {
+//         return -1;
+//     }
+//     // a es igual a b
+//     return 0;
+// })
+
+// console.log(items)
+
+
+
 // Arreglo de cadenas de texto
 let frutas = ['manzana', 'pera', 'banana', 'uva']
 
