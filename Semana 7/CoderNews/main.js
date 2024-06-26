@@ -10,7 +10,8 @@ class Noticia {
 
 }
 
-const contenedorMayor = document.getElementById("Container-Main")
+const contenedorMain = document.getElementById("Container-Main")
+const body = document.getElementsByTagName("body")
 
 const Noticias = [
     new Noticia("Julian Alvarez marca 10 goles en un solo partido y establece un nuevo récord mundial", "El joven jugador argentino del River Plate deja boquiabiertos a los aficionados al marcar 10 goles en un solo partido, superando cualquier récord previo en la historia del fútbol.", "Juan Pérez", "https://media.ambito.com/p/9198118c25e325c23f37aa20b8ec4d2b/adjuntos/239/imagenes/040/575/0040575606/julian-alvarez-manchester-cityjpg.jpg", "futbol"),
@@ -25,3 +26,36 @@ const Noticias = [
     new Noticia("Lady Gaga anuncia su próxima gira mundial que incluirá conciertos en la Luna y Marte", "La superestrella del pop Lady Gaga ha dejado a sus fans emocionados al anunciar su próxima gira mundial, que incluirá conciertos en la Luna y Marte, marcando un hito histórico en la industria del entretenimiento.", "María Fernández", "https://e.rpp-noticias.io/xlarge/2018/08/31/270627_670677.jpg", "extra")
 ];
 
+const botonDark = document.getElementById("botonDark")
+let modoDark = localStorage.getItem("dark")
+
+
+if(modoDark==null){
+    localStorage.setItem("dark", "off")
+}else{
+    if(modoDark == "on"){
+        body[0].classList.add("bodyDark")
+    }
+}
+
+
+botonDark.addEventListener("click", ()=>{
+    body[0].classList.toggle("bodyDark")
+    if(body[0].classList.contains("bodyDark")){
+        localStorage.setItem("dark", "on")
+    }else{
+        localStorage.setItem("dark", "off")
+    }
+})
+
+
+Noticias.forEach(noticia =>{
+    contenedorMain.innerHTML += `
+        <div class="card">
+            <h3>${noticia.titulo}</h3>
+            <p>${noticia.contenido}</p>
+            <img src=${noticia.imagen} alt=""/>
+            <p class="autor">${noticia.autor}</p>
+        </div>
+    `
+})
