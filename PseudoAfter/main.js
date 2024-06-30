@@ -113,10 +113,6 @@ function eventoParaEliminar(e){
         carrito[indice].cantidad--
     }
 
-
-
-
-
     muestreElCarrito()
 }
 
