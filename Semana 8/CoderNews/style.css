@@ -20,7 +20,8 @@ body{
 }
 
 .bodyDark{
-    background-color: var(--color-secundario-oscuro);}
+    background-color: var(--color-secundario-oscuro);
+}
 
 .Container-Mayor{
 
@@ -155,6 +156,7 @@ body{
 }
 
 .card{
+    position: relative;
     background-color: white;
     width: 80%;
     display: flex;
@@ -181,6 +183,27 @@ body{
     width: 100%;
     height: 200px;
     object-fit: cover;
+    transition: all 0.5s;
+}
+
+.card img:hover{
+    cursor: pointer;
+    width: 100%;
+    height: 400px;
+}
+
+.autor{
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    padding: 10px;
+    font-size: 1.5rem;
+    transition: all 0.5s;
+}
+.card img:hover + .autor{
+    background-color: var(--color-primario-oscuro);
+    color: white;
+    border-radius: 0 20px 0 20px;
 }
 
 .ModoOscuro{
