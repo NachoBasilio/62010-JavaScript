@@ -81,6 +81,8 @@ p{
     margin: 10px 0;
 }
 
+
+
 .precio{
     font-size: 1.8rem;
     text-align: center;
@@ -158,4 +160,8 @@ p{
     display: flex;
     justify-content: space-between;
     align-items: center;
+}
+
+#cantidad{
+    color: #000;
 }

@@ -59,36 +59,36 @@ function crearTarjetaDeProducto({titulo, precio, imagen, descripcion}){
     `
 }
 
-const llamadoAJson = async () => {
-    const rpt = await fetch("./info.json")
-    const data = await rpt.json()
+// const llamadoAJson = async () => {
+//     const rpt = await fetch("./info.json")
+//     const data = await rpt.json()
 
 
-    data.articulos.forEach(producto => {
-        crearTarjetaDeProducto(producto)
-    })
-    agregarEvento()
-    console.log(data)
-}
-
-llamadoAJson()
-// fetch("./info.json")
-// .then(datos => {
-//    if(!datos.ok){
-//     throw new Error("Error al traer los datos")
-//    }else{
-//     return datos.json() 
-// }
-// })
-// .then(productos => {
-//     productos.articulos.forEach(producto => {
+//     data.articulos.forEach(producto => {
 //         crearTarjetaDeProducto(producto)
 //     })
 //     agregarEvento()
-// })
-// .catch(e => {
-//     console.error("Hubo un error al operar con fetch " + e.message)
-// })
+// }
+
+// llamadoAJson()
+
+fetch("./info.json")
+.then(datos => {
+    if(!datos.ok){
+        throw new Error("Error al traer los datos")
+    }else{
+        return datos.json()
+    }
+})
+.then(productos => {
+    productos.articulos.forEach(producto => {
+        crearTarjetaDeProducto(producto)
+    })
+    agregarEvento()
+})
+.catch(e => {
+    console.error("Hubo un error al operar con fetch " + e.message)
+})
 
 function mostrarCarrito (){
     carritoFisico.innerHTML = ""
@@ -111,16 +111,41 @@ function mostrarCarrito (){
 
     const cancelar = document.getElementById("cancelar")
     cancelar.addEventListener("click", ()=>{
-        miCarrito.limpiarCarrito();
-        //Aplicar sweet alert
-        mostrarCarrito()
+        Swal.fire({
+            title: "¿De verdad no nos querés comprar? 🤬😤",
+            showDenyButton: true,
+            showCancelButton: false,
+            confirmButtonText: "Si, soy malvado 💀",
+            denyButtonText: `No, fue un error`
+        }).then((result) => {
+            if (result.isConfirmed) {
+                miCarrito.limpiarCarrito()
+                badgeNumeroCarrito()
+                mostrarCarrito()
+            } else if (result.isDenied) {
+            Swal.fire("Gracias uwu");
+            }
+        });
     })
 
     const borrar = document.getElementById("borrar")
     borrar.addEventListener("click", ()=>{
         miCarrito.limpiarCarrito();
-        //Aplicar sweet alert
-        mostrarCarrito()
+        Swal.fire({
+            title: "Gracias por su compra ¿Esta seguro de hacerla?",
+            showDenyButton: true,
+            showCancelButton: false,
+            confirmButtonText: "Si, soy un capo",
+            denyButtonText: `No, 💀`
+        }).then((result) => {
+            if (result.isConfirmed) {
+                miCarrito.limpiarCarrito()
+                badgeNumeroCarrito()
+                mostrarCarrito()
+            } else if (result.isDenied) {
+            Swal.fire("Jej 💀");
+            }
+        });
     })
 }
 
@@ -137,13 +162,38 @@ function agregarEvento (){
                 precio,
                 cantidad: 0,
             })
-            //Aplicar sweet alert
+            Swal.fire({
+                title: `Usted agrego ${titulo}, a su carrito`,
+                icon: "success",
+                background: "#d4d4d4",
+                color: "black",
+                iconColor: "green",
+                toast: true,
+                position: 'bottom-end',
+                showConfirmButton: false,
+                timer: 2000,
+                timerProgressBar: true
+            })
+            badgeNumeroCarrito()
             mostrarCarrito()
         })
     })
 
 }
 
+function badgeNumeroCarrito (){
+    const cantidadDeProductos = miCarrito.articulos.reduce((acc, current)=>{
+        return acc + current.cantidad
+    },0)
+    const cantidadNodo = document.getElementById("cantidad")
+    cantidadNodo.innerHTML = cantidadDeProductos
+}
+
 botonCarrito.addEventListener("click", ()=>{
     carritoFisico.classList.toggle('active')
+})
+
+
+document.addEventListener("DOMContentLoaded", ()=>{
+    badgeNumeroCarrito()
 })
