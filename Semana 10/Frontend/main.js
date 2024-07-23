@@ -67,7 +67,7 @@ function crearTarjetaDeProducto({titulo, precio, imagen, descripcion}){
 }
 
 function llamado(){
-    fetch("./info.json")
+    fetch("http://localhost:3000/api/products")
     .then(datos => {
        if(!datos.ok){
         throw new Error("Error al traer los datos")
@@ -76,9 +76,9 @@ function llamado(){
        }
     })
     .then(productos => {
-    
+        console.log(productos)
         elementoPrincipal.innerHTML = ""
-        productos.articulos.forEach(producto => {
+        productos.forEach(producto => {
             crearTarjetaDeProducto(producto)
         })
         agregarEvento()
