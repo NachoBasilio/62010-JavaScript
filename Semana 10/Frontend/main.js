@@ -69,11 +69,11 @@ function crearTarjetaDeProducto({titulo, precio, imagen, descripcion}){
 function llamado(){
     fetch("http://localhost:3000/api/products")
     .then(datos => {
-       if(!datos.ok){
+    if(!datos.ok){
         throw new Error("Error al traer los datos")
-       }else{
+    }else{
         return datos.json() 
-       }
+    }
     })
     .then(productos => {
         console.log(productos)
